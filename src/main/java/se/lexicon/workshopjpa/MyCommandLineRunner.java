@@ -27,7 +27,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         System.out.println("##### App has started #####");
 //        Details details = new Details("adde.fj@gmail.com", "Andreas", LocalDate.now());
 //        detailsRepository.save(details);
-//        AppUser appUser = new AppUser("admin", "password", LocalDate.now(), details);
+//        AppUser appUser = new AppUser("admin", "password", details);
 //        appUserRepository.save(appUser);
         System.out.println("find by Username" + appUserRepository.findByUsername("admin"));
         System.out.println("-----------------");

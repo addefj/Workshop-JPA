@@ -7,7 +7,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface AppUserRepository extends CrudRepository<AppUser, Integer> {
+public interface AppUserRepository extends CrudRepository<AppUser, Integer> { //extends CrudRepository to get the implemented Crud methods
+
+    //extra methods defined
     AppUser findByUsername(String username);
 
     List<AppUser> findByRegDateIsBetween(LocalDate startDate, LocalDate endDate);
