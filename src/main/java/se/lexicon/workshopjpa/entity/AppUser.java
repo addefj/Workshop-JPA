@@ -28,11 +28,16 @@ public class AppUser {
     @JoinColumn(name = "details_id")
     private Details userDetails;
 
-    public AppUser(String username, String password, LocalDate regDate, Details userDetails) {
+    //constructor
+    public AppUser(String username, String password, Details userDetails) {
         this.username = username;
         this.password = password;
-        this.regDate = regDate;
         this.userDetails = userDetails;
+    }
+
+    @PrePersist
+    public void prePersist(){
+        this.regDate = LocalDate.now();
     }
 }
 

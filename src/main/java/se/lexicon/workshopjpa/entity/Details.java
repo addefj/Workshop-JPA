@@ -20,8 +20,10 @@ public class Details {
     private String email;
     @Column(nullable = false, length = 100)
     private String name;
+    @Column(nullable = false)
     private LocalDate birthDate;
 
+    //constructor
     public Details(String email, String name, LocalDate birthDate) {
         this.email = email;
         this.name = name;
