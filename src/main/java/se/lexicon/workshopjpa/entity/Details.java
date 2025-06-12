@@ -15,12 +15,14 @@ public class Details {
     //fields
     @Id //makes id the primary key in Database
     @GeneratedValue(strategy = GenerationType.IDENTITY) //generates an id with autoincrement for each entity
+    @Setter(AccessLevel.NONE)
     private int id;
     @Column(nullable = false, length = 100, unique = true) //limits email to 100 chars, and makes sure its unique and not null
     private String email;
     @Column(nullable = false, length = 100)
     private String name;
     @Column(nullable = false)
+    @Setter(AccessLevel.NONE)
     private LocalDate birthDate;
 
     //constructor

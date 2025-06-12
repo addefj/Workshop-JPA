@@ -17,11 +17,13 @@ public class AppUser {
     //fields
     @Id //makes id the primary key in Database
     @GeneratedValue(strategy = GenerationType.IDENTITY) //generates an id with autoincrement for each entity
+    @Setter(AccessLevel.NONE)
     private int id;
     @Column(nullable = false, length = 100, unique = true) //limits username to 100 chars, and makes sure its unique and not null
     private String username;
     @Column(nullable = false, length = 100)
     private String password;
+    @Setter(AccessLevel.NONE)
     private LocalDate regDate;
 
     @OneToOne() //makes sure only one userDetails can be linked to one AppUser
