@@ -25,7 +25,7 @@ public class AppUser {
     private LocalDate regDate;
 
     @OneToOne() //makes sure only one userDetails can be linked to one AppUser
-    @JoinColumn(name = "details_id") //column name for the joined column
+    @JoinColumn(name = "details_id", unique = true) //column name for the joined column
     private Details userDetails;
 
     //constructor
