@@ -17,6 +17,7 @@ public class BookLoan {
     //fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //generates an id with autoincrement for each entity
+    @Setter(AccessLevel.NONE)
     private int id;
     @Column(nullable = false)
     private LocalDate loanDate;
@@ -41,10 +42,9 @@ public class BookLoan {
     private Book book;
 
     //constructor
-    public BookLoan(LocalDate loanDate, LocalDate dueDate, boolean returned, AppUser borrower, Book book) {
-        this.loanDate = loanDate;
-        this.dueDate = dueDate;
-        this.returned = returned;
+    public BookLoan(AppUser borrower, Book book) {
+        this.loanDate = LocalDate.now();
+        this.dueDate = LocalDate.now().plusDays(book.getMaxLoanDays());
         this.borrower = borrower;
         this.book = book;
     }
