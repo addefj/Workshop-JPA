@@ -39,6 +39,7 @@ public class Author {
         this.lastName = lastName;
     }
 
+    //todo test methods
     //helper methods
     public void addBook(Book book){
         writtenBooks.add(book);

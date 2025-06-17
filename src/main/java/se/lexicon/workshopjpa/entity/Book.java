@@ -36,6 +36,7 @@ public class Book {
         this.authors = authors;
     }
 
+    //todo test methods
     //helper methods
     public void addAuthor(Author author){
         authors.add(author);
