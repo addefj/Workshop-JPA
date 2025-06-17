@@ -25,20 +25,10 @@ public class BookLoan {
     private LocalDate dueDate;
     private boolean returned;
 
-    @ManyToOne(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.DETACH}
-    )
+    @ManyToOne
     private AppUser borrower;
 
-    @ManyToOne(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.DETACH}
-    )
+    @ManyToOne
     private Book book;
 
     //constructor

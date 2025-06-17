@@ -33,6 +33,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("##### App has started #####");
+        // step1: create books
+        // step2: create one user
+        // step3: create one bookloan for the user
 
         //testing methods in AppUser and Details repositories
 //        Details details = new Details("adde.fj@gmail.com", "Andreas", LocalDate.now());
@@ -56,14 +59,14 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         //testing methods in BookLoan and Book repositories
         Details details = new Details("adde.fj@gmail.com", "Andreas", LocalDate.now());
-        detailsRepository.save(details);
         AppUser appUser = new AppUser("admin", "password", details);
-        appUserRepository.save(appUser);
+        AppUser createdUser = appUserRepository.save(appUser);
         Book book = new Book("1234567890", "The Hobbit", 10);
-        bookRepository.save(book);
-        BookLoan bookLoan = new BookLoan(appUser, book);
-        bookLoanRepository.save(bookLoan);
+        Book createdBook = bookRepository.save(book);
+        BookLoan bookLoan = new BookLoan(createdUser, createdBook);
+        BookLoan createdBookLoan = bookLoanRepository.save(bookLoan);
+        System.out.println("createdBookLoan = " + createdBookLoan);
 
-        System.out.println(bookRepository.findByIsbnIgnoreCase("1234567890"));
+        //System.out.println(bookRepository.findByIsbnIgnoreCase("1234567890"));
     }
 }

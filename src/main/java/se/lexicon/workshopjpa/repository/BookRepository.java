@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends CrudRepository<Book, Integer> {
-    Book findByIsbnIgnoreCase(String isbn);
-    Book findByTitleContainsIgnoreCase(String title);
-    List<Book> findByMaxLoanDaysLessThan(int maxLoanDays);
+//    Book findByIsbnIgnoreCase(String isbn);
+//    Book findByTitleContainsIgnoreCase(String title);
+//    List<Book> findByMaxLoanDaysLessThan(int maxLoanDays);
 }
