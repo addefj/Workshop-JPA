@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import se.lexicon.workshopjpa.entity.*;
-import se.lexicon.workshopjpa.repository.AppUserRepository;
-import se.lexicon.workshopjpa.repository.BookLoanRepository;
-import se.lexicon.workshopjpa.repository.BookRepository;
-import se.lexicon.workshopjpa.repository.DetailsRepository;
+import se.lexicon.workshopjpa.repository.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
@@ -18,13 +16,17 @@ public class MyCommandLineRunner implements CommandLineRunner {
     private AppUserRepository appUserRepository;
     private BookLoanRepository bookLoanRepository;
     private BookRepository bookRepository;
+    private AuthorRepository authorRepository;
 
     @Autowired
-    public MyCommandLineRunner(DetailsRepository detailsRepository, AppUserRepository appUserRepository, BookLoanRepository bookLoanRepository, BookRepository bookRepository) {
+    public MyCommandLineRunner(DetailsRepository detailsRepository, AppUserRepository appUserRepository,
+                               BookLoanRepository bookLoanRepository, BookRepository bookRepository,
+                               AuthorRepository authorRepository) {
         this.detailsRepository = detailsRepository;
         this.appUserRepository = appUserRepository;
         this.bookLoanRepository = bookLoanRepository;
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -34,10 +36,25 @@ public class MyCommandLineRunner implements CommandLineRunner {
         Details details = new Details("test.test@test.com", "Andreas", LocalDate.now());
         AppUser appUser = new AppUser("admin", "password", details);
         AppUser createdUser = appUserRepository.save(appUser);
-        Book book = new Book("1234567890", "The Hobbit", 10);
-        Book createdBook = bookRepository.save(book);
-        BookLoan bookLoan = new BookLoan(createdUser, createdBook);
-        BookLoan createdBookLoan = bookLoanRepository.save(bookLoan);
+        Author author = new Author("Author", "Authorsson");
+        Author createdAuthor = authorRepository.save(author);
+        HashSet<Author> authors = new HashSet<>();
+        authors.add(createdAuthor);
+        Book book = new Book("1234567890", "The Hobbit", 10, authors);
+        Book book2 = new Book("1234567891", "The Hobbit 2", 10, authors);
+        Book book3 = new Book("1234567892", "The Hobbit 3", 10, authors);
 
+        Book createdBook = bookRepository.save(book);
+        Book createdBook2 = bookRepository.save(book2);
+        Book createdBook3 = bookRepository.save(book3);
+
+        //authorRepository.delete(createdAuthor);
+        //authorRepository.updateName(createdAuthor.getId(), "Author2", "Authorsson2");
+        //System.out.println(authorRepository.findByFirstNameIgnoreCase("author"));
+        //System.out.println(authorRepository.findByLastNameIgnoreCase("authorsson"));
+        //System.out.println(authorRepository.findByFirstNameAndLastNameContainingIgnoreCase("author", "son"));
+
+
+        System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
     }
 }

@@ -25,6 +25,7 @@ public class Author {
     @Column(nullable = false, length = 100)
     private String lastName;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "authors_books",
