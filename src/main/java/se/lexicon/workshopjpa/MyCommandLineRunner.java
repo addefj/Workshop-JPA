@@ -56,6 +56,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
         //System.out.println(authorRepository.findByFirstNameAndLastNameContainingIgnoreCase("author", "son"));
 
 
-        System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
+        //System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
     }
 }

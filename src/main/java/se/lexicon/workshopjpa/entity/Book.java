@@ -25,7 +25,12 @@ public class Book {
     @Column(nullable = false)
     private int maxLoanDays;
 
-    @ManyToMany(mappedBy = "writtenBooks")
+    @ManyToMany
+    @JoinTable(
+            name = "books_authors",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
     private Set<Author> authors = new HashSet<>();
 
     //constructor

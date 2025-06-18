@@ -26,11 +26,7 @@ public class Author {
     private String lastName;
 
     @ToString.Exclude
-    @ManyToMany
-    @JoinTable(
-            name = "authors_books",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> writtenBooks = new HashSet<>();
 
     //constructor
