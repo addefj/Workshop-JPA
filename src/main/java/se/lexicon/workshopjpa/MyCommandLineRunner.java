@@ -34,6 +34,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         System.out.println("##### App has started #####");
 
         Details details = new Details("test.test@test.com", "Andreas", LocalDate.now());
+        Details savedDetails = detailsRepository.save(details);
         AppUser appUser = new AppUser("admin", "password", details);
         AppUser createdUser = appUserRepository.save(appUser);
         Author author = new Author("Author", "Authorsson");
