@@ -17,10 +17,8 @@ public interface AuthorRepository extends CrudRepository<Author, Integer> {
     Author findByLastNameIgnoreCase(String lastName);
     Author findByFirstNameAndLastNameContainingIgnoreCase(String firstName, String lastName);
 
-    //todo test
     @Query("SELECT a FROM Author a JOIN a.writtenBooks b WHERE b.id = :id")
     List<Author> findAuthorsByBookId(@Param("id") int id);
-    //Find by a book's ID.
 
     @Transactional
     @Modifying

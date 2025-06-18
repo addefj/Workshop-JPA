@@ -49,13 +49,18 @@ public class MyCommandLineRunner implements CommandLineRunner {
         createdBook.getAuthors().add(createdAuthor);
         createdBook2.getAuthors().add(createdAuthor);
         createdBook3.getAuthors().add(createdAuthor);
+        bookRepository.save(createdBook);
+        bookRepository.save(createdBook2);
+        bookRepository.save(createdBook3);
+
         createdAuthor.getWrittenBooks().add(createdBook);
         createdAuthor.getWrittenBooks().add(createdBook2);
         createdAuthor.getWrittenBooks().add(createdBook3);
-        //System.out.println(createdBook.getAuthors());
-        System.out.println(createdAuthor.getWrittenBooks());
 
-        //System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
+
+
+
+        System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
 
         //authorRepository.delete(createdAuthor);
         //authorRepository.updateName(createdAuthor.getId(), "Author2", "Authorsson2");
