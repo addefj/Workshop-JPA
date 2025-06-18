@@ -41,9 +41,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
         Author createdAuthor = authorRepository.save(author);
         HashSet<Author> authors = new HashSet<>();
         authors.add(createdAuthor);
-        Book book = new Book("1234567890", "The Hobbit", 10, authors);
-        Book book2 = new Book("1234567891", "The Hobbit 2", 10, authors);
-        Book book3 = new Book("1234567892", "The Hobbit 3", 10, authors);
+        Book book = new Book("1234567890", "The Hobbit", 10);
+        Book book2 = new Book("1234567891", "The Hobbit 2", 10);
+        Book book3 = new Book("1234567892", "The Hobbit 3", 10);
 
         Book createdBook = bookRepository.save(book);
         Book createdBook2 = bookRepository.save(book2);

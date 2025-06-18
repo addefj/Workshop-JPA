@@ -34,22 +34,9 @@ public class Book {
     private Set<Author> authors = new HashSet<>();
 
     //constructor
-    public Book(String isbn, String title, int maxLoanDays, Set<Author> authors) {
+    public Book(String isbn, String title, int maxLoanDays) {
         this.isbn = isbn;
         this.title = title;
         this.maxLoanDays = maxLoanDays;
-        this.authors = authors;
-    }
-
-    //todo test methods
-    //helper methods
-    public void addAuthor(Author author){
-        authors.add(author);
-        author.getWrittenBooks().add(this);
-    }
-
-    public void removeAuthor(Author author){
-        authors.remove(author);
-        author.getWrittenBooks().remove(this);
     }
 }

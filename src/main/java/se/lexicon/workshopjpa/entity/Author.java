@@ -34,18 +34,4 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    //todo test methods
-    //helper methods
-    public void addBook(Book book){
-        writtenBooks.add(book);
-        book.getAuthors().add(this);
-    }
-
-    public void removeBook(Book book){
-        writtenBooks.remove(book);
-        book.getAuthors().remove(this);
-    }
-
-
 }
