@@ -60,6 +60,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         //testing methods in BookLoan and Book repositories
         Details details = new Details("adde.fj@gmail.com", "Andreas", LocalDate.now());
         AppUser appUser = new AppUser("admin", "password", details);
+        Details createdDetails = detailsRepository.save(details);
         AppUser createdUser = appUserRepository.save(appUser);
         Book book = new Book("1234567890", "The Hobbit", 10);
         Book createdBook = bookRepository.save(book);
@@ -68,16 +69,16 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         //System.out.println("createdBookLoan = " + createdBookLoan);
 
-        //System.out.println(bookRepository.findByIsbnIgnoreCase("1234567890"));
-        //System.out.println(bookRepository.findByTitleContainsIgnoreCase("ob"));
-        //System.out.println(bookRepository.findByMaxLoanDaysLessThan(11));
-
-        //System.out.println(bookLoanRepository.findByBorrowerId(createdUser.getId()) );
-        //System.out.println(bookLoanRepository.findByBookId(createdBook.getId()) );
-        //System.out.println(bookLoanRepository.findByReturnedIsFalse());
-        //System.out.println(bookLoanRepository.findByReturnedIsFalseAndDueDateBefore(LocalDate.now().plusDays(11)));
-        //bookLoanRepository.setReturnedTrueByBookLoanId(createdBookLoan.getId());
-        //System.out.println(bookLoanRepository.findByBookId(createdBook.getId()));
-        //System.out.println(bookLoanRepository.findByLoanDateIsBetween(LocalDate.of(2025, 1, 1), LocalDate.of(2025, 12, 31)));
+//        System.out.println(bookRepository.findByIsbnIgnoreCase("1234567890"));
+//        System.out.println(bookRepository.findByTitleContainsIgnoreCase("ob"));
+//        System.out.println(bookRepository.findByMaxLoanDaysLessThan(11));
+//
+//        System.out.println(bookLoanRepository.findByBorrowerId(createdUser.getId()) );
+//        System.out.println(bookLoanRepository.findByBookId(createdBook.getId()) );
+//        System.out.println(bookLoanRepository.findByReturnedIsFalse());
+//        System.out.println(bookLoanRepository.findByReturnedIsFalseAndDueDateBefore(LocalDate.now().plusDays(11)));
+//        bookLoanRepository.setReturnedTrueByBookLoanId(createdBookLoan.getId());
+//        System.out.println(bookLoanRepository.findByBookId(createdBook.getId()));
+//        System.out.println(bookLoanRepository.findByLoanDateIsBetween(LocalDate.of(2025, 1, 1), LocalDate.of(2025, 12, 31)));
     }
 }
