@@ -28,7 +28,7 @@ public class AppUser {
     @Setter(AccessLevel.NONE)
     private LocalDate regDate;
 
-    @OneToOne(cascade = CascadeType.ALL) //makes sure only one userDetails can be linked to one AppUser
+    @OneToOne //makes sure only one userDetails can be linked to one AppUser
     @JoinColumn(name = "details_id", unique = true) //column name for the joined column
     private Details userDetails;
 
