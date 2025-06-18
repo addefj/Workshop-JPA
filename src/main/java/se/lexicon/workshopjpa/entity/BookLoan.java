@@ -26,8 +26,10 @@ public class BookLoan {
     private boolean returned;
 
     @ManyToOne
+    @JoinColumn(name = "borrower_id", nullable = false)
     private AppUser borrower;
 
+    //oneToMany?
     @ManyToOne
     private Book book;
 
