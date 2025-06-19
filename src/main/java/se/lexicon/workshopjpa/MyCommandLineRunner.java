@@ -7,7 +7,6 @@ import se.lexicon.workshopjpa.entity.*;
 import se.lexicon.workshopjpa.repository.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
@@ -39,15 +38,25 @@ public class MyCommandLineRunner implements CommandLineRunner {
         AppUser createdUser = appUserRepository.save(appUser);
         Author author = new Author("Author", "Authorsson");
         Author createdAuthor = authorRepository.save(author);
-        HashSet<Author> authors = new HashSet<>();
-        authors.add(createdAuthor);
-        Book book = new Book("1234567890", "The Hobbit", 10, authors);
-        Book book2 = new Book("1234567891", "The Hobbit 2", 10, authors);
-        Book book3 = new Book("1234567892", "The Hobbit 3", 10, authors);
-
+        Book book = new Book("1234567890", "The Hobbit", 10);
+        Book book2 = new Book("1234567891", "The Hobbit 2", 10);
+        Book book3 = new Book("1234567892", "The Hobbit 3", 10);
         Book createdBook = bookRepository.save(book);
         Book createdBook2 = bookRepository.save(book2);
         Book createdBook3 = bookRepository.save(book3);
+
+        createdBook.getAuthors().add(createdAuthor);
+        createdBook2.getAuthors().add(createdAuthor);
+        createdBook3.getAuthors().add(createdAuthor);
+        bookRepository.save(createdBook);
+        bookRepository.save(createdBook2);
+        bookRepository.save(createdBook3);
+
+        createdAuthor.getWrittenBooks().add(createdBook);
+        createdAuthor.getWrittenBooks().add(createdBook2);
+        createdAuthor.getWrittenBooks().add(createdBook3);
+
+        System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
 
         //authorRepository.delete(createdAuthor);
         //authorRepository.updateName(createdAuthor.getId(), "Author2", "Authorsson2");
@@ -55,7 +64,5 @@ public class MyCommandLineRunner implements CommandLineRunner {
         //System.out.println(authorRepository.findByLastNameIgnoreCase("authorsson"));
         //System.out.println(authorRepository.findByFirstNameAndLastNameContainingIgnoreCase("author", "son"));
 
-
-        System.out.println(authorRepository.findAuthorsByBookId(createdBook.getId()));
     }
 }
