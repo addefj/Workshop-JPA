@@ -41,19 +41,26 @@ public class MyCommandLineRunner implements CommandLineRunner {
         Book book = new Book("1234567890", "The Hobbit", 10);
         Book createdBook = bookRepository.save(book);
 
-        createdBook.getAuthors().add(createdAuthor);
+        createdBook.addAuthor( createdAuthor);
         bookRepository.save(createdBook);
-        createdAuthor.getWrittenBooks().add(createdBook);
+        authorRepository.save(createdAuthor);
+        System.out.println(createdBook);
+        System.out.println("-----------------");
+        System.out.println(createdAuthor);
+        System.out.println("-----------------");
+        System.out.println(createdBook.getAuthors());
+        System.out.println("-----------------");
+        System.out.println(createdAuthor.getWrittenBooks());
 
-        BookLoan bookLoan = new BookLoan(createdBook);
-        createdUser.addBookLoan(bookLoan);
-        bookLoanRepository.save(bookLoan);
-        appUserRepository.save(createdUser);
+//        BookLoan bookLoan = new BookLoan(createdBook);
+//        createdUser.addBookLoan(bookLoan);
+//        bookLoanRepository.save(bookLoan);
+//        appUserRepository.save(createdUser);
 
         //System.out.println(createdUser);
         //System.out.println(createdUser.getBookLoans());
         //System.out.println("--------------");
-        System.out.println(bookLoan);
+        //System.out.println(bookLoan);
 
     }
 }

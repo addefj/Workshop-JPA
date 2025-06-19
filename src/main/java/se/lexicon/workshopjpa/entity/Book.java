@@ -25,6 +25,7 @@ public class Book {
     @Column(nullable = false)
     private int maxLoanDays;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "books_authors",
@@ -40,7 +41,7 @@ public class Book {
         this.maxLoanDays = maxLoanDays;
     }
 
-    //todo test methods
+
     //helper methods
     public void addAuthor(Author author){
         authors.add(author);
