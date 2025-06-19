@@ -29,15 +29,13 @@ public class BookLoan {
     @JoinColumn(name = "borrower_id", nullable = false)
     private AppUser borrower;
 
-    //oneToMany?
     @ManyToOne
     private Book book;
 
     //constructor
-    public BookLoan(AppUser borrower, Book book) {
+    public BookLoan(Book book) {
         this.loanDate = LocalDate.now();
         this.dueDate = LocalDate.now().plusDays(book.getMaxLoanDays());
-        this.borrower = borrower;
         this.book = book;
     }
 
