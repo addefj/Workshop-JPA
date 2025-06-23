@@ -24,5 +24,4 @@ public interface BookLoanRepository extends CrudRepository<BookLoan, Integer> {
     @Modifying
     @Query("UPDATE BookLoan bl SET bl.returned = true WHERE bl.id = :id")
     void setReturnedTrueByBookLoanId(@Param("id") int id);
-
 }

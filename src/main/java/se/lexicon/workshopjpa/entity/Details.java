@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 
-@EqualsAndHashCode //generates equals and hashcode methods automatically
+
 @ToString //generates a toString method
 @NoArgsConstructor //generates a no-args constructor
 @AllArgsConstructor //generates a constructor with all fields
